@@ -131,8 +131,7 @@ if __name__ == '__main__':
             d_batches = chunk([_.split() for _ in pnames], arg_bsize)
 
             embeddings = []
-            print('Calculate name embeddings for {} batches'
-                  .format(math.ceil(len(pnames) / arg_bsize)))
+            print('Calculate name embeddings for {} batches'.format(math.ceil(len(pnames) / arg_bsize)))
             for d_batch in tqdm(iter(d_batches)):
                 fd_batch = encoder.get_fd_data(d_batch)
                 embeddings += list(session.run(encoder.h, feed_dict=fd_batch))

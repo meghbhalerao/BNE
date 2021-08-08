@@ -8,21 +8,11 @@ import numpy as np
 def rnn_encoder(rnn_type, x, mask, d_dim, n_layer, initializer, pooling=None):
     seq_len = tf.reduce_sum(mask, 1)
     with tf.variable_scope('rnn_{}'.format(0)):
-        h_outs, h_final = rnn_encoder_single_layer(
-                    rnn_type,
-                    x,
-                    seq_len,
-                    d_dim,
-                    initializer)
+        h_outs, h_final = rnn_encoder_single_layer(rnn_type, x, seq_len, d_dim, initializer)
     if n_layer > 1:
         for i in range(1, n_layer):
             with tf.variable_scope('rnn_{}'.format(i)):
-                h_outs, h_final = rnn_encoder_single_layer(
-                            rnn_type,
-                            h_outs,
-                            seq_len,
-                            d_dim,
-                            initializer)
+                h_outs, h_final = rnn_encoder_single_layer( rnn_type, h_outs, seq_len, d_dim, initializer)
 
     if pooling is None:
         h = h_outs

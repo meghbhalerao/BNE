@@ -14,8 +14,7 @@ PAD = '</pad>'
 RESERVE_TKS = [START_W, END_W, START_S, END_S, DICT_SW, UNK, PAD, EOL_TK]
 
 PUCT_SET = set(string.punctuation)
-STOP_WORDS = set(['an', 'the', 'and', 'of', 'in', 'on', 'at',
-                  'other', 'others', 'The', 'nos', 'NOS'])
+STOP_WORDS = set(['an', 'the', 'and', 'of', 'in', 'on', 'at', 'other', 'others', 'The', 'nos', 'NOS'])
 STOP_TOKENS = STOP_WORDS | PUCT_SET
 
 spacy_model = spacy.load("en_core_web_sm")
