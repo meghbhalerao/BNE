@@ -61,8 +61,7 @@ def rnn_encoder_single_layer(rnn_type, input, seq_len, d_dim, initializer):
 
         if bi_directional:
             raw_outputs, (fw, bw) = \
-                tf.nn.bidirectional_dynamic_rnn(cell['forward'],
-                                                cell['backward'],
+                tf.nn.bidirectional_dynamic_rnn(cell['forward'], cell['backward'],
                                                 input,
                                                 dtype=tf.float32,
                                                 sequence_length=seq_len,
@@ -126,8 +125,7 @@ def ffnn(inputs, h_dim, out_dim, n_layer, initializer,
     return y_raw
 
 
-def create_mixed_trainable_emb(dim, n_ws, n_special_ws, initializer,
-                               is_trainable, scope_name):
+def create_mixed_trainable_emb(dim, n_ws, n_special_ws, initializer, is_trainable, scope_name):
     """ Reserve index 0 for non-trainable padding, following by
     n_ws pretrained embeddings and n_special_ws trainable embeddings.
     """
